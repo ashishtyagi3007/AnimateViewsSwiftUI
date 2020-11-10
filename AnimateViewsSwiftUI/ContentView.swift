@@ -7,10 +7,20 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    @State private var isRotated = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Button("Rotate") {
+                self.isRotated.toggle()
+            }
+            Spacer()
+            ForEach(0..<6) { index in
+                RectangleView(isRotated: $isRotated, index: index)
+            }
+        }
     }
 }
 
